@@ -2,7 +2,7 @@
 // -- Determine the deepest depth of the string of parentheses and print it to the console.
 // -- Specify whether the string is symmetrical. If not, indicate why.
 
-const string = '))))(((()';
+const string = '))))(((()'; // deepest depth === 1 but will fail as it is not symmetrical.
 let deepestDepth = 0;
 let depthCount = 0;
 
