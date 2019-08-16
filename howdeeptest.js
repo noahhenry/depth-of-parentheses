@@ -1,5 +1,5 @@
 // -- OBJECTIVE -- //
-// -- Determine the deepest depth of the parentheses string and print it to the console.
+// -- Determine the deepest depth of the string of parentheses and print it to the console.
 
 let deepestDepth = 0;
 let count = 0;
@@ -17,5 +17,4 @@ for (let i = 0; i < string.length; i++) {
   }
 }
 
-console.log('Count: ' + count);
 console.log('Deepest Depth: ' + deepestDepth);
