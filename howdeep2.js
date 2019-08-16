@@ -2,7 +2,7 @@
 // -- Determine the deepest depth of the string of parentheses and print it to the console.
 // -- Specify whether the string is symmetrical. If not, indicate why.
 
-const string = '))))(((()'; // deepest depth === 1 but will fail as it is not symmetrical.
+const string = '))))(((()';
 let deepestDepth = 0;
 let depthCount = 0;
 
@@ -11,19 +11,23 @@ const generalErrorMsg = 'Error: there are not an equal amount of opening and clo
 const tooManyRightParenErrorMsg = 'Error: there are too many right parentheses.';
 const tooManyLeftParenErrorMsg = 'Error: there are too many left parentheses.';
 
-function doesItEqual(string) {
+function countTheDepth(string, pushDepthCount) {
   for (let i = 0; i < string.length; i++) {
     if (string.charAt(i) === '(') {
       depthCount++;
     } else {
       depthCount--;
     }
+
+    if (pushDepthCount) {
+      if (depthCount > deepestDepth) {
+        deepestDepth = depthCount;
+      }
+    }
   }
 }
 
-function solve() {
-  doesItEqual(string);
-
+function doesEqual() {
   if (depthCount === 0) {
     isEqual = true;
   } else {
@@ -36,23 +40,18 @@ function solve() {
       console.log(tooManyLeftParenErrorMsg);
     }
   }
+}
+
+function solve() {
+  countTheDepth(string, false);
+  doesEqual()
 
   if (isEqual) {
-    for (let i = 0; i < string.length; i++) {
-      if (string.charAt(i) === '(') {
-        depthCount++;
-      } else {
-        depthCount--;
-      }
-
-      if (depthCount > deepestDepth) {
-        deepestDepth = depthCount;
-      }
-    }
+    countTheDepth(string, true)
   }
 }
 
 solve()
 
-console.log('Count: ' + depthCount);
+// console.log('Count: ' + depthCount);
 console.log('Deepest Depth: ' + deepestDepth);
